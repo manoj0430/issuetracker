@@ -1,10 +1,13 @@
 require('dotenv').config();  
 const express = require('express');
 
-const db = require('./config/mongoose');
+
 const port = process.env.PORT || 8000;
 const app = express();
 const path = require('path');
+const mongoose=require('mongoose');
+mongoose.set('strictQuery', false);
+const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
 
 app.use(express.urlencoded());

@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
-const url = 'mongodb://0.0.0.0:27017/db';
-// mongoose.connect('url') 
-mongoose.connect(url);
-const db=mongoose.connection;
+const db = mongoose.connection;
 
-//If any Error then Getting this Line
-db.on('error',console.error.bind(console,"Error connecting to MongoDB"));   
+main().catch(err => console.log(err));
 
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/issuetracker');
 
-db.once('open',()=>{
-    console.log("Connected to Database :: MongoDB ")
-});
-
-module.exports=db;  //Exports db
+  console.log("My db is working");
+  
+}
+module.exports = db;
